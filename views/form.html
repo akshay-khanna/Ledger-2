@@ -14,7 +14,7 @@
     <header>
         <h2>Tenant Form</h2>
     </header>
-    <form action="/tenant_info" method="POST" onsubmit="return validateForm()">
+    <form action="/tenant_info" method="GET" onsubmit="return validateForm()">
         <fieldset>
             <label>Start Date </label>
             <input type="text" id='start_date' name="start_date" required>
@@ -24,9 +24,9 @@
             <br><br>
             <label>Frequency </label>
             <select type="text" name="frequency" required>
-                <option type="text" value="monthly">MONTHLY</option>
-                <option type="text" value="fortnightly" selected>FORTNIGHTLY</option>
-                <option type="text" value="weekly">WEEKLY</option>
+                <option type="text" value="MONTHLY">MONTHLY</option>
+                <option type="text" value="FORTNIGHTLY" selected>FORTNIGHTLY</option>
+                <option type="text" value="FORTNIGHTLY">WEEKLY</option>
             </select> 
             <!-- <input type="text" id="frequency" name="frequency" required> -->
             <br><br>
@@ -35,6 +35,7 @@
             <br><br>
             <label>Time Zone</label>
             <input type="time" id="time_zone" name="time_zone">
+            <input type="text" name="form_input" value="form_input" id="form_input" hidden>
             <br><br>
             <button id="submit_button" type="submit" >Submit</button>
         </fieldset>

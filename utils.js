@@ -9,8 +9,8 @@ function weeklyPayment(details) {
 
 	for (let i = 0; i < Math.floor(total_days / 7); i++) {
 		weekly_result.push({
-			tenancy_start: new_start_date.toDateString(),
-			tenancy_end: new_start_date.addDays(6).toDateString(),
+			tenancy_start: new_start_date.toISOString(),
+			tenancy_end: new_start_date.addDays(6).toISOString(),
 			weekly_rent: details.weekly_rent,
 		});
 		new_start_date = new_start_date.addDays(7);
@@ -20,8 +20,8 @@ function weeklyPayment(details) {
 
 	if (remaining_days !== 0) {
 		weekly_result.push({
-			tenancy_start: new_start_date.toDateString(),
-			tenancy_end: new_start_date.addDays(remaining_days).toDateString(),
+			tenancy_start: new_start_date.toISOString(),
+			tenancy_end: new_start_date.addDays(remaining_days).toISOString(),
 			weekly_rent: (details.weekly_rent / 7) * (remaining_days + 1),
 		});
 	}
@@ -37,8 +37,8 @@ function fortnightPayment(details) {
 
 	for (let i = 0; i < Math.floor(total_days / 14); i++) {
 		fortnightResult.push({
-			tenancy_start: new_start_date.toDateString(),
-			tenancy_end: new_start_date.addDays(13).toDateString(), //one day is the start_date itself
+			tenancy_start: new_start_date.toISOString(),
+			tenancy_end: new_start_date.addDays(13).toISOString(), //one day is the start_date itself
 			fortnight_rent: details.weekly_rent * 2,
 		});
 		new_start_date = new_start_date.addDays(14);
@@ -48,8 +48,8 @@ function fortnightPayment(details) {
 
 	if (remaining_days !== 0) {
 		fortnightResult.push({
-			tenancy_start: new_start_date.toDateString(),
-			tenancy_end: new_start_date.addDays(remaining_days).toDateString(),
+			tenancy_start: new_start_date.toISOString(),
+			tenancy_end: new_start_date.addDays(remaining_days).toISOString(),
 			fortnight_rent: (details.weekly_rent / 7) * (remaining_days + 1), //+1 coz start_date needs to be included in the rent as well
 		});
 	}
@@ -72,8 +72,8 @@ function monthlyPayment(details) {
 
 		if (new_end_date <= end_date) {
 			monthlyResult.push({
-				tenancy_start: new_start_date.toDateString(),
-				tenancy_end: new_end_date.toDateString(),
+				tenancy_start: new_start_date.toISOString(),
+				tenancy_end: new_end_date.toISOString(),
 				monthly_rent: ((details.weekly_rent / 7) * 365) / 12,
 			});
 			i++;
@@ -89,8 +89,8 @@ function monthlyPayment(details) {
 
 	if (remaining_days > 0) {
 		monthlyResult.push({
-			tenancy_start: new_start_date.toDateString(),
-			tenancy_end: end_date.toDateString(),
+			tenancy_start: new_start_date.toISOString(),
+			tenancy_end: end_date.toISOString(),
 			monthly_rent: (details.weekly_rent / 7) * (remaining_days + 1), //+1 coz start_date needs to be included in the rent as well
 		});
 	}
@@ -102,3 +102,4 @@ module.exports = {
 	monthlyPayment: monthlyPayment,
 	fortnightPayment: fortnightPayment,
 };
+
