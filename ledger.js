@@ -23,31 +23,41 @@ con.connect(function (err) {
 });
 */
 
+var data = [];
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, './views')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.set('views', __dirname);
 
 app.get('/', (req, res, next) => {
-	res.sendFile(path.join(__dirname, './views/form.html'));
+	res.render(path.join(__dirname, './views/form.html'));
 });
 
 app.post('/tenant_info', function (req, res) {
 	if (req.body.frequency === 'weekly') {
 		let tenant_info = utils.weeklyPayment(req.body);
-		res.send('WEEKLY PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
+		// res.send('WEEKLY PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
+		data = tenant_info;
+		res.redirect('/tenant_info');
 	} else if (req.body.frequency === 'fortnightly') {
 		let tenant_info = utils.fortnightPayment(req.body);
-		res.send('FORNIGHT PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
+		// res.send('FORNIGHT PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
+		data = tenant_info;
+		res.redirect('/tenant_info');
 	} else if (req.body.frequency === 'monthly') {
 		let tenant_info = utils.monthlyPayment(req.body);
-		res.send('MONTHLY PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
-		// res.sendFile(path.join(__dirname, './table.html'), { data: tenant_info });
-		// res.send(JSON.stringify(tenant_info) + result);
+		// res.send('MONTHLY PAYMENT SCHED:: ' + JSON.stringify(tenant_info));
+		data = tenant_info;
+		res.redirect('/tenant_info');
 	}
 });
 
 app.get('/tenant_info', (req, res, next) => {
-	res.render(path.join(__dirname, './views/table.html'), { data: tenant_info });
+	res.render('./views/table.html', { data: data });
 });
 
 app.listen(3000, () => {

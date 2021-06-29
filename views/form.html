@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <script src="./helper.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href= "/public/assets/style.css" type="text/css" rel="stylesheet"/>    
+    <script src="/public/assets/helper.js"></script>
     <title> Ledger Input Form </title>
 </head>
 
+
+
 <body>
     <header>
-        <h2>Tenant Database</h2>
+        <h2>Tenant Form</h2>
     </header>
     <form action="/tenant_info" method="POST" onsubmit="return validateForm()">
         <fieldset>
-            <label>Start Date</label>
+            <label>Start Date </label>
             <input type="text" id='start_date' name="start_date" required>
             <br><br>
-            <label>End Date</label>
+            <label>End Date </label>
             <input type="text" id="end_date" name="end_date" required>
             <br><br>
-            <label>Frequency</label>
+            <label>Frequency </label>
             <select type="text" name="frequency" required>
                 <option type="text" value="monthly">MONTHLY</option>
                 <option type="text" value="fortnightly" selected>FORTNIGHTLY</option>
@@ -28,7 +30,7 @@
             </select> 
             <!-- <input type="text" id="frequency" name="frequency" required> -->
             <br><br>
-            <label>Weekly Rent</label>
+            <label>Weekly Rent </label>
             <input type="number" id="weekly_rent" name="weekly_rent" required>
             <br><br>
             <label>Time Zone</label>

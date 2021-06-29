@@ -45,8 +45,8 @@ function weeklyPayment(details) {
 
 	for (let i = 0; i < Math.floor(total_days / 7); i++) {
 		result.push({
-			start1: new_start_date.toDateString(),
-			end1: new_start_date.addDays(6).toDateString(),
+			tenancy_start: new_start_date.toDateString(),
+			tenancy_end: new_start_date.addDays(6).toDateString(),
 			weekly_rent: details.weekly_rent,
 		});
 		new_start_date = new_start_date.addDays(7);
@@ -61,7 +61,7 @@ function weeklyPayment(details) {
 			weekly_rent: (details.weekly_rent / 7) * (remaining_days + 1),
 		});
 	}
-	console.log('kkkk', result);
+	// console.log('kkkk', result);
 	return result;
 }
 
@@ -75,15 +75,15 @@ function fortnightPayment(details) {
 
 	for (let i = 0; i < Math.floor(total_days / 14); i++) {
 		fortnightResult.push({
-			start1: new_start_date.toDateString(),
-			end1: new_start_date.addDays(13).toDateString(),
+			tenancy_start: new_start_date.toDateString(),
+			tenancy_end: new_start_date.addDays(13).toDateString(),
 			fortnight_rent: details.weekly_rent * 2,
 		});
 		new_start_date = new_start_date.addDays(14);
 	}
 
 	let remaining_days = total_days % 14;
-	console.log('remaining_days', remaining_days);
+	// console.log('remaining_days', remaining_days);
 
 	if (remaining_days !== 0) {
 		fortnightResult.push({
@@ -92,7 +92,7 @@ function fortnightPayment(details) {
 			fortnight_rent: (details.weekly_rent / 7) * (remaining_days + 1),
 		});
 	}
-	console.log('mmmmm', fortnightResult);
+	// console.log('mmmmm', fortnightResult);
 	return fortnightResult;
 }
 
@@ -127,7 +127,7 @@ function monthlyPayment(details) {
 
 	if (end_date >= new_start_date) {
 		remaining_days = daysBetween(new_start_date, end_date);
-		remaining_days += 1;
+		// remaining_days += 1;
 	}
 	console.log('new_start_date', new_start_date, 'end_date', end_date, 'i', i, 'remaining_days', remaining_days);
 
