@@ -6,17 +6,42 @@ header {
 	color: #0f0f0f;
 	font-size: x-large;
 }
-h3 {
+
+h2 {
 	margin-top: 2px;
 	text-align: center;
-	background-color: #80bfff;
 }
+
 form {
 	width: 45%;
 	display: inline-block;
 	margin: 25px;
-}
-footer {
-	margin-top: 3%;
+	display: block;
 	text-align: center;
+	margin-left: 25%;
+	margin-top: 25px;
+}
+
+#submit_button {
+	background-color: #ffb833;
+	border: none;
+	color: #0f0f0f;
+	padding: 10px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+table {
+	border: 3px solid black;
+	width: 50%;
+	margin-top: 30px;
+	margin-left: 25%;
+}
+
+thead,
+tr,
+td {
+	border: 1px solid black;
 }

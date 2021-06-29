@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href= "/public/assets/styles.css" type="text/css" />
+    <link href= "/public/assets/style.css" type="text/css" rel="stylesheet"/>  
 </head>
 
 <body>
@@ -11,11 +11,11 @@
         <h2>Tenant Ledger</h2>
     </header>
     <!-- CREATE OUTPUT TABLE -->
-    <table style="border: 3px solid black; width: 50%;" >
-        <thead style="border: 1px solid black;">
-            <tr style="border: 1px solid black;">
+    <table  >
+        <thead >
+            <tr >
                 <% for ( key in data[0] ) { %>
-                    <th style="border: 1px solid black;">
+                    <th >
                         <%= key %>
                     </th>
                     <% } %>
@@ -23,9 +23,9 @@
         </thead>
 
         <% data.forEach(function(dc) { %>
-            <tr style="border: 1px solid black;">
+            <tr >
                 <% for ( key in dc ) { %>
-                    <td style="border: 1px solid black;">
+                    <td >
                         <%= dc[key] %>
                     </td>
                     <% } %>
